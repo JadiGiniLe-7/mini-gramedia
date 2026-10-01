@@ -23,7 +23,7 @@
                     <a href="{{ route('admin.subscription-packages.index') }}" class="nav-link">Paket Langganan</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">Buku</a>
+                    <a href="{{ route('admin.books.index') }}" class="nav-link {{ request()->routeIs('admin.books.index') ? 'active' : '' }}">Buku</a>
                 </li>
             @else
                 {{-- dropdown --}}

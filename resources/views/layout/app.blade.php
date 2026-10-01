@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     {{-- CDN Datatables --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/3.1.2/css/dataTables.dataTables.min.css" />
+    {{-- CDN QuillJS --}}
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 
     <style>
         html,
@@ -41,7 +43,8 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     {{-- CDN Datatables --}}
     <script src="https://cdn.datatables.net/3.1.2/js/dataTables.min.js"></script>
-
+    {{-- CDN QuillJS --}}
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     @stack('scripts')
 
 </body>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookCategoryController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\SubscriptionPackageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::middleware(['IsLoggedIn'])->group(function () {
 
         Route::resource('book-categories', BookCategoryController::class);
         Route::resource('subscription-packages', SubscriptionPackageController::class);
+        Route::resource('books', BookController::class);
     });
 });
 

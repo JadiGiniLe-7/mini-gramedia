@@ -40,7 +40,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('admin.subscription-packages.index') }}",
-                columns: [{
+                columns: [{   
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
                         orderable: false,
