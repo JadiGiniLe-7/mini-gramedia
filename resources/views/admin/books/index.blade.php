@@ -56,10 +56,17 @@
                                 <p>Jumlah Halaman <br> <span id="data-page-of-book"></span> halaman</p>
                             </div>
                         </div>
+                        <hr>
+                        <div class="col-12">
+                            <p style="font-weight: bold">DESKRIPSI BUKU</p>
+                            <div class="bg-light border rounded p-3 text-break overflow-auto" style="max-height: 220px">
+                                <div id="data-description"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn me-auto" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn me-auto" data-bs-dismiss="modal">Tutup</button>    
                 </div>
             </div>
         </div>
@@ -113,12 +120,13 @@
                 // ambil data attribut data-title="" yg dikirim di datatable controller
                 let title = btn.data('title');
                 let category = btn.data('category');
-                let price =  "Rp " + btn.data('price');
+                let price = "Rp " + btn.data('price');
                 let publisher = btn.data('publisher');
                 let writer = btn.data('writer');
                 let pageOfBook = btn.data('pageOfBook');
                 let releaseDate = btn.data('releaseDate');
                 let language = btn.data('language');
+                let description = btn.data('description');
 
                 // simpan data ke span yg dikosongkan di modal
                 $("#data-title").text(title);
@@ -129,6 +137,7 @@
                 $("#data-page-of-book").text(pageOfBook);
                 $("#data-release-date").text(releaseDate);
                 $("#data-language").text(language);
+                $("#data-description").text(description);
 
                 // isi src gambar di modal dengan data cover yg dikirim di datatable controller
                 let cover = btn.data('cover');

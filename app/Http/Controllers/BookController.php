@@ -49,6 +49,7 @@ class BookController extends Controller
                         data-language="' . $row->language . '"
                         data-page-of-book="' . $row->page_of_book . '"
                         data-release-date="' . date('d M Y', strtotime($row->release_date)) . '"
+                        data-description="' . e(strip_tags($row->description ?? '<b><strong>')) . '"
                     >Detail</button>';
 
                     return $btnEdit . $btnDelete . $btnDetail;
@@ -115,24 +116,63 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Book $book)
     {
-        //
+        $bookCategories = BookCategory::all();
+        return view('admin.books.edit', compact('book', 'bookCategories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $validatedData = $request->validate([
+            'cover' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp', 'max:2048'],
+            'title' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'numeric'],
+            'description' => ['nullable', 'string'],
+            'language' => ['required', 'string', 'max:255'],
+            'publisher' => ['required', 'string', 'max:255'],
+            'writer' => ['required', 'string', 'max:255'],
+            'release_date' => ['required', 'date'],
+            'page_of_book' => ['required', 'integer'],
+            'book_category_id' => ['required', 'exists:book_categories,id'],
+        ]);
+
+        if ($request->hasFile('cover')) {
+            if ($book->cover) {
+                $oldImagePath = str_replace('/storage/', '', $book->cover);
+                if (Storage::disk('public')->exists($oldImagePath)) {
+                    Storage::disk('public')->delete($oldImagePath);
+                }
+            }
+            $coverImage = $request->file('cover');
+            $coverImageName = time() . '_' . $coverImage->getClientOriginalName();
+
+            Storage::disk('public')->putFileAs('covers', $coverImage, $coverImageName);
+
+            $validatedData['cover'] = Storage::url('covers/' . $coverImageName);
+        }
+        $book->update($validatedData);
+
+        return redirect()->route('admin.books.index')->with('success', 'Berhasil mengubah data buku!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Book $book)
     {
-        //
+        if ($book->cover) {
+            $oldImagePath = str_replace('/storage/', '', $book->cover);
+
+            if (Storage::disk('public')->exists($oldImagePath)) {
+                Storage::disk('public')->delete($oldImagePath);
+            }
+        }
+
+        $book->delete();
+        return redirect()->route('admin.books.index')->with('success', 'Berhasil menghapus data buku!');
     }
 }
