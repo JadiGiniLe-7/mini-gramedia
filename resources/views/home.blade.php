@@ -89,7 +89,8 @@
             <div class="row g-4">
                 @foreach ($subscriptionPackages as $Package)
                     <div class="col-md-4">
-                        <div class="card h-100"
+                        <a href="{{ route('subscription-packages.show', $Package->id) }}"
+                            class="card card-link card-link-pop h-100 text-decoration-none"
                             style="background: linear-gradient(135deg, #ffffff 0%, {{ $Package->color ?? '#000000' }} 100%);">
                             <div class="card-body row align-items-center">
                                 <div class="col-4"></div>
@@ -105,7 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\BookCategory;
 use App\Models\SubscriptionPackage;
+use App\Models\SubscriptionPackageBook;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,5 +37,27 @@ class HomeController extends Controller
 
         $books = $books->get();
         return view('search_result', compact('books', 'query', 'kategori'));
+    }
+
+    public function subscriptionPackageDetail(Request $request, string $id)
+    {
+        $subscriptionPackage = SubscriptionPackage::findOrFail($id);
+        $query = $request->input('q');
+
+        // ambil data dari tabel subscription_package_books, hanya milik paket yang dipilih
+        $packageBooks = SubscriptionPackageBook::with('book.bookCategory')
+            ->where('subscription_package_id', $subscriptionPackage->id)
+            // cari berdasarkan judul buku (relasi book)
+            ->when($query, function ($packageBook) use ($query) {
+                $packageBook->whereHas('book', function ($book) use ($query) {
+                    $book->where('title', 'like', '%' . $query . '%');
+                });
+            })
+            ->get();
+
+        // jumlah seluruh buku di paket (tanpa filter pencarian)
+        $totalBooks = SubscriptionPackageBook::where('subscription_package_id', $subscriptionPackage->id)->count();
+
+        return view('subscription_package_detail', compact('subscriptionPackage', 'packageBooks', 'query', 'totalBooks'));
     }
 }
