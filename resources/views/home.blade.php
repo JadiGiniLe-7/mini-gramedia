@@ -117,144 +117,30 @@
                 <h2 class="m-0 text-dark">Buku Baru Dirilis</h2>
             </div>
             {{-- DAFTAR BUKU BARiS --}}
-            <div id="wrapper-slider" class="row">
-                <div class="col-md-3 px-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <img class="d-block w-100 mb-3 rounded" alt="Book Cover"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxJCyBFfRVFNO5ZKpnBB-jFyS8nV-xFMMYUXjPKd_JDg&s=10" />
-                            <div class="d-flex gap-2 mb-2">
-                                <span class="badge bg-blue-lt"><i class="fa-solid fa-mobile me-1"></i>PDF</span>
-                                <span class="badge bg-secondary-lt">3+</span>
-                            </div>
-                            <div>
-                                <h5 class="text-secondary mb-1">Tere Liye</h5>
-                                <h3 class="card-title mb-2">Bumi</h3>
-                                <h4 class="text-primary fw-bold fs-3">Rp 49.000</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 px-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <img class="d-block w-100 mb-3 rounded" alt="Book Cover"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqB5patwJUgfpirzbGQSVJ49Wd9u9O5mY6_pnbNTEIvQ&s=10" />
-                            <div class="d-flex gap-2 mb-2">
-                                <span class="badge bg-blue-lt"><i class="fa-solid fa-mobile me-1"></i>PDF</span>
-                                <span class="badge bg-secondary-lt">3+</span>
-                            </div>
-                            <div>
-                                <h5 class="text-secondary mb-1">Tere Liye</h5>
-                                <h3 class="card-title mb-2">Bulan</h3>
-                                <h4 class="text-primary fw-bold fs-3">Rp 49.000</h4>
+            <div id="wrapper-slider">
+                @forelse ($latestBooks as $book)
+                    <div class="col-md-3 px-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <img class="d-block mx-auto w-75 h-50" alt="Book Cover"
+                                    src="{{ asset($book->cover) }}" />
+                                <div class="d-flex gap-2 mb-2">
+                                    <span class="badge bg-blue-lt"><i class="fa-solid fa-mobile me-1"></i>PDF</span>
+                                    <span class="badge bg-secondary-lt">3+</span>
+                                </div>
+                                <div>
+                                    <h5><span style="font-size: 0.8rem" class="text-secondary">{{ $book->author }}</span>
+                                        <br><span style="font-size: 1rem">{{ $book->title }}</span>
+                                    </h5>
+                                    <h4 style="font-size: 1.2rem; font-weight:bold">Rp
+                                        {{ number_format($book->price, 0, ',', '.') }}</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 px-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <img class="d-block w-100 mb-3 rounded" alt="Book Cover"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReQnmXGCVdDG4RnafSgcSGY1Fp57iT8B8poOhlnUjccg&s=10" />
-                            <div class="d-flex gap-2 mb-2">
-                                <span class="badge bg-blue-lt"><i class="fa-solid fa-mobile me-1"></i>PDF</span>
-                                <span class="badge bg-secondary-lt">3+</span>
-                            </div>
-                            <div>
-                                <h5 class="text-secondary mb-1">Tere Liye</h5>
-                                <h3 class="card-title mb-2">Bintang</h3>
-                                <h4 class="text-primary fw-bold fs-3">Rp 49.000</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 px-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <img class="d-block w-100 mb-3 rounded" alt="Book Cover"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJBoA-sBPAC-EYbQqPWoKplvoh1bPN8cpNqtpLr-sFmQ&s=10" />
-                            <div class="d-flex gap-2 mb-2">
-                                <span class="badge bg-blue-lt"><i class="fa-solid fa-mobile me-1"></i>PDF</span>
-                                <span class="badge bg-secondary-lt">3+</span>
-                            </div>
-                            <div>
-                                <h5 class="text-secondary mb-1">Tere Liye</h5>
-                                <h3 class="card-title mb-2">Matahari</h3>
-                                <h4 class="text-primary fw-bold fs-3">Rp 49.000</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 px-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <img class="d-block w-100 mb-3 rounded" alt="Book Cover"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStLvNx2uv5Yt5QmTdrArMoq0nFEzvMBDqSM17KOEoGeg&s=10" />
-                            <div class="d-flex gap-2 mb-2">
-                                <span class="badge bg-blue-lt"><i class="fa-solid fa-mobile me-1"></i>PDF</span>
-                                <span class="badge bg-secondary-lt">3+</span>
-                            </div>
-                            <div>
-                                <h5 class="text-secondary mb-1">Tere Liye</h5>
-                                <h3 class="card-title mb-2">Ceros dan Batozar</h3>
-                                <h4 class="text-primary fw-bold fs-3">Rp 49.000</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 px-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <img class="d-block w-100 mb-3 rounded" alt="Book Cover"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGbCQ8FsOMMb1d3l69Yq0SlAvuITB3vyQsTzc2zoW1xA&s=10" />
-                            <div class="d-flex gap-2 mb-2">
-                                <span class="badge bg-blue-lt"><i class="fa-solid fa-mobile me-1"></i>PDF</span>
-                                <span class="badge bg-secondary-lt">3+</span>
-                            </div>
-                            <div>
-                                <h5 class="text-secondary mb-1">Tere Liye</h5>
-                                <h3 class="card-title mb-2">Nebula</h3>
-                                <h4 class="text-primary fw-bold fs-3">Rp 49.000</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 px-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <img class="d-block w-100 mb-3 rounded" alt="Book Cover"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVAoZ3IsBZYGLTGllFsKwOrvzifNUIuymm6ecOIw4Lmw&s=10" />
-                            <div class="d-flex gap-2 mb-2">
-                                <span class="badge bg-blue-lt"><i class="fa-solid fa-mobile me-1"></i>PDF</span>
-                                <span class="badge bg-secondary-lt">3+</span>
-                            </div>
-                            <div>
-                                <h5 class="text-secondary mb-1">Tere Liye</h5>
-                                <h3 class="card-title mb-2">Komet Minor</h3>
-                                <h4 class="text-primary fw-bold fs-3">Rp 49.000</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 px-2">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <img class="d-block w-100 mb-3 rounded" alt="Book Cover"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBbV3u9Xua-ulkYCex3WiBW8rriZbjBDLWi3Aks_JLTQ&s=10" />
-                            <div class="d-flex gap-2 mb-2">
-                                <span class="badge bg-blue-lt"><i class="fa-solid fa-mobile me-1"></i>PDF</span>
-                                <span class="badge bg-secondary-lt">3+</span>
-                            </div>
-                            <div>
-                                <h5 class="text-secondary mb-1">Tere Liye</h5>
-                                <h3 class="card-title mb-2">Selena</h3>
-                                <h4 class="text-primary fw-bold fs-3">Rp 49.000</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                @empty
+                    <p class="text-center">Tidak ada buku terbaru yang tersedia.</p>
+                @endforelse
             </div>
         </div>
         {{-- Buku Gratis Section --}}
@@ -265,94 +151,43 @@
             </div>
             {{-- Daftar Buku --}}
             <div class="row">
-                <div class="col-4">
-                    <div class="card d-flex flex-column">
-                        <div class="row row-0 flex-fill">
-                            <div class="col-md-3">
-                                <a href="#">
-                                    <img src="https://i.pinimg.com/736x/81/24/87/8124875c12346912196d2c65817e3b9f.jpg"
-                                        class="w-100 h-100 object-cover" alt="Card side image" />
-                                </a>
-                            </div>
-                            <div class="col">
-                                <div class="card-body h-full d-flex flex-column">
-                                    <h3 class="card-title">
-                                        <div class="badge"><i class="fa-solid fa-mobile"></i>PDF</div>
-                                    </h3>
-                                    <div class="text-secondary">
-                                        Tere Liye
-                                        <br><span class="text-dark">Pergi</span>
-                                    </div>
-                                    <div class="d-flex align-items-center pt-4 mt-auto">
-                                        <h3><span class="text-decoration-line-through text-secondary">Rp 49.000</span>
-                                            <span class="text-dark">Rp 0</span>
+                @forelse ($freeBooks as $book)
+                    <div class="col-4">
+                        <div class="card d-flex flex-column">
+                            <div class="row row-0 flex-fill">
+                                <div class="col-md-3">
+                                    <a href="#">
+                                        <img src="{{ asset($book->cover) }}" class="w-100 h-100 object-cover"
+                                            alt="Card side image" />
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <div class="card-body h-full d-flex flex-column">
+                                        <h3 class="card-title">
+                                            <div class="badge"><i class="fa-solid fa-mobile"></i>PDF</div>
                                         </h3>
+                                        <div class="text-secondary">
+                                            Penulis
+                                            <br><span class="text-dark">{{ $book->writer }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center pt-4 mt-auto">
+                                            <h3>
+                                                <span class="text-dark">Rp 0</span>
+                                            </h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="card d-flex flex-column">
-                        <div class="row row-0 flex-fill">
-                            <div class="col-md-3">
-                                <a href="#">
-                                    <img src="https://i.pinimg.com/736x/1e/a8/af/1ea8af0e9312ab23b45eac2e47163db8.jpg"
-                                        class="w-100 h-100 object-cover" alt="Card side image" />
-                                </a>
-                            </div>
-                            <div class="col">
-                                <div class="card-body h-full d-flex flex-column">
-                                    <h3 class="card-title">
-                                        <div class="badge"><i class="fa-solid fa-mobile"></i>PDF</div>
-                                    </h3>
-                                    <div class="text-secondary">
-                                        Tere Liye
-                                        <br><span class="text-dark">Tentang Kamu</span>
-                                    </div>
-                                    <div class="d-flex align-items-center pt-4 mt-auto">
-                                        <h3><span class="text-decoration-line-through text-secondary">Rp 49.000</span>
-                                            <span class="text-dark">Rp 0</span>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card d-flex flex-column">
-                        <div class="row row-0 flex-fill">
-                            <div class="col-md-3">
-                                <a href="#">
-                                    <img src="https://i.pinimg.com/736x/37/a7/c9/37a7c9cf3581f377570949628b380c92.jpg"
-                                        class="w-100 h-100 object-cover" alt="Card side image" />
-                                </a>
-                            </div>
-                            <div class="col">
-                                <div class="card-body h-full d-flex flex-column">
-                                    <h3 class="card-title">
-                                        <div class="badge"><i class="fa-solid fa-mobile"></i>PDF</div>
-                                    </h3>
-                                    <div class="text-secondary">
-                                        Tere Liye
-                                        <br><span class="text-dark">Pulang</span>
-                                    </div>
-                                    <div class="d-flex align-items-center pt-4 mt-auto">
-                                        <h3><span class="text-decoration-line-through text-secondary">Rp 49.000</span>
-                                            <span class="text-dark">Rp 0</span>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                @endforelse
             </div>
-            <div class="row mt-2">
-            </div>
+
         </div>
+        <div class="row mt-2">
+        </div>
+    </div>
     </div>
 @endsection
 

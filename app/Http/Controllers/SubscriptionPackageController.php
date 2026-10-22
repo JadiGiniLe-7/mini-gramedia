@@ -21,6 +21,7 @@ class SubscriptionPackageController extends Controller
                 ->addColumn('action', function ($data) {
                     $editUrl = route('admin.subscription-packages.edit', $data->id);
                     $deleteUrl = route('admin.subscription-packages.destroy', $data->id);
+                    $books = route('admin.subscription-packages.books', $data->id);
                     $csrf = csrf_field();
                     $method = method_field('DELETE');
 
@@ -29,7 +30,12 @@ class SubscriptionPackageController extends Controller
                     $btnDelete = '<form action="' . $deleteUrl . '"method="POST"
                     class="d-inline">' . $csrf . $method . '<button type="submit" class="btn btn-sm btn-danger"
                     onclick="return confirm(\'Apakah Anda Yakin Ingin Menghapus Paket Langganan Ini?\')">Hapus</button>
-                </form>';
+                </form>
+
+                <a href="' . $books . '" class="btn btn-sm btn-info">
+                    Buku
+                </a>
+                ';
 
                     return $btnEdit . $btnDelete;
                 })->rawColumns(['action'])->toJson();
@@ -104,6 +110,6 @@ class SubscriptionPackageController extends Controller
         $subscriptionPackage = SubscriptionPackage::findOrFail($id);
 
         $subscriptionPackage->delete();
-        return redirect()->route('admin.subscription-packages.index')->with('sycces', 'Paket langganan telah berhasil di hapus');
+        return redirect()->route('admin.subscription-packages.index')->with('success', 'Paket langganan telah berhasil di hapus');
     }
 }
