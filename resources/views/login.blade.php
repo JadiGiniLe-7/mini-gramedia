@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('content')
+    <h1 class="text-center mt-5">LOGIN</h1>
     <form action="{{ route('login.store') }}" method="POST" class="form-fieldset w-50 bg-white mx-auto mt-5">
         @if (Session::get('success'))
             <div class="alert alert-important alert-success alert-dismissible" role="alert">

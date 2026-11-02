@@ -58,6 +58,6 @@ class HomeController extends Controller
         // jumlah seluruh buku di paket (tanpa filter pencarian)
         $totalBooks = SubscriptionPackageBook::where('subscription_package_id', $subscriptionPackage->id)->count();
 
-        return view('subscription_package_detail', compact('subscriptionPackage', 'packageBooks', 'query', 'totalBooks'));
+        return view('user.subscription-packages.subscription_package_detail', compact('subscriptionPackage', 'packageBooks', 'query', 'totalBooks'));
     }
 }

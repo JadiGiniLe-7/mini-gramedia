@@ -19,6 +19,11 @@ Route::middleware(['IsLoggedIn'])->group(function () {
         'logout'
     ])->name('logout');
 
+    Route::get('/subscription-packages/{id}/checkout', [SubscriptionPackageController::class, 'checkoutPage'])
+        ->name('subscription-packages.checkout.page');
+    Route::post('/subscription-packages/{id}/checkout', [SubscriptionPackageController::class, 'checkout'])
+        ->name('subscription-packages.checkout');
+
     Route::prefix('admin')->name('admin.')->middleware('IsAdmin')->group(function () {
         Route::get('/dashboard', function () {
             return view('admin.dashboard');
@@ -37,7 +42,8 @@ Route::middleware(['IsLoggedIn'])->group(function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
-Route::get('/subscription-packages/{id}', [HomeController::class, 'subscriptionPackageDetail'])->name('subscription-packages.show');
+Route::get('/subscription-packages/{id}', [HomeController::class, 'subscriptionPackageDetail'])
+    ->name('subscription-packages.show');
 
 
 Route::middleware(['IsGuest'])->group(function () {

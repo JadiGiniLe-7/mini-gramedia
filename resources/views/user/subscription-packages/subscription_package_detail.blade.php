@@ -20,7 +20,8 @@
             <h2 class="m-0 text-dark">{{ $subscriptionPackage->name }}</h2>
             <div class="d-flex align-items-center gap-3">
                 <h3 class="m-0 text-dark">Rp{{ number_format($subscriptionPackage->price, 0, ',', '.') }}</h3>
-                <a href="#" class="btn btn-primary rounded-pill px-4">Langganan Sekarang</a>
+                <a href="{{ route('subscription-packages.checkout.page', $subscriptionPackage->id) }}"
+                    class="btn btn-primary rounded-pill px-4">Langganan Sekarang</a>
             </div>
         </div>
 
@@ -36,8 +37,7 @@
 
         @if ($query)
             <p class="text-muted">Hasil pencarian: "{{ $query }}"
-                <a href="{{ route('subscription-packages.show', $subscriptionPackage->id) }}"
-                    class="ms-2">Reset</a>
+                <a href="{{ route('subscription-packages.show', $subscriptionPackage->id) }}" class="ms-2">Reset</a>
             </p>
         @endif
 
