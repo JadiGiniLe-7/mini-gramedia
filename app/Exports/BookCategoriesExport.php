@@ -20,7 +20,7 @@ class BookCategoriesExport implements
     ShouldAutoSize,
     WithEvents
 {
-    private int $rowNumber = 0;p
+    private int $rowNumber = 0;
 
     public function collection(): Collection
     {
