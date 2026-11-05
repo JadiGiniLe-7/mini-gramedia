@@ -73,6 +73,9 @@
         <div class="flex-row order-md-last ms-auto">
             {{-- Auth::check() : cek apakah sudah ada sesi login --}}
             @if (Auth::check())
+                <a href="{{ route('purchase-history.index') }}" class="btn btn-outline-primary me-2">
+                    <i class="fa-solid fa-user me-1" aria-hidden="true"></i> Profil
+                </a>
                 <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
             @else
                 <a href="{{ route('login') }}" class="btn btn-primary">Masuk</a>

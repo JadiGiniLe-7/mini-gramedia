@@ -3,7 +3,10 @@
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Tambah Paket Langganan</h2>
-            <a href="{{ route('admin.subscription-packages.create') }}" class="btn btn-primary">Tambah Paket Langganan</a>
+            <div class="d-flex gap-2">
+                <a href="{{ route('admin.subscription-packages.export') }}" class="btn btn-success">Export Excel</a>
+                <a href="{{ route('admin.subscription-packages.create') }}" class="btn btn-primary">Tambah Paket Langganan</a>
+            </div>
         </div>
         @if (@session('success'))
             <div class="alert alert-success">

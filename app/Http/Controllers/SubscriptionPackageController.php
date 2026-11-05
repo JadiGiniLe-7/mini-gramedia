@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SubscriptionPackagesExport;
 use App\Models\SubscriptionPackage;
 use App\Models\SubscriptionPackageUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Matrix\Functions;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 
 class SubscriptionPackageController extends Controller
@@ -44,6 +46,11 @@ class SubscriptionPackageController extends Controller
                 })->rawColumns(['action'])->toJson();
         }
         return view('admin.subscription-packages.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new SubscriptionPackagesExport(), 'data-paket-langganan.xlsx');
     }
 
     /**

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BookCategoriesExport;
 use App\Models\BookCategory;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 
 class BookCategoryController extends Controller
@@ -41,6 +43,11 @@ class BookCategoryController extends Controller
                 ->toJson();
         }
         return view('admin.book-categories.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new BookCategoriesExport(), 'data-kategori-buku.xlsx');
     }
 
     /**
